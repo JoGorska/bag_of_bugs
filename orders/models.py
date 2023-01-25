@@ -1,10 +1,14 @@
 from django.db import models
-from stock.models import StockItem
-# Create your models here.
 
 
 class CustomerOrder(models.Model):
+    '''
+    customer order has foreign key relation to user
+    reverse foreign key relation to StockItems
+    once order is placed, the sstock item will become unavailable to
+    other customers
+    '''
     reference_code = models.CharField()
-    user = models.ForeignKey()
+    user = models.ForeignKey(User)
     date = models.DateField()
-    items = models.ManyToManyField(StockItem)
+    # todo method to get all items from stock items
