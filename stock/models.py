@@ -7,7 +7,10 @@ from orders.models import CustomerOrder
 
 
 class LossGainReason(models.Model):
-    name = models.CharField(unique=True, blank=False, null=False)
+    name = models.CharField(max_length=220, unique=True, blank=False, null=False)
+
+    def __str__(self):
+        return self.name
 
 
 class ManualStockUpdate(models.Model):
@@ -20,6 +23,9 @@ class ManualStockUpdate(models.Model):
     police_ref = models.CharField(max_length=220, blank=True, null=True)
     incident_raport = models.TextField(blank=True, null=True)
 
+    def __str__(self):
+        return self.reference_code
+
 
 class StockItem(models.Model):
     reference_code = AutoSlugField(populate_from=['species__name'], unique=True, blank=False, null=False)
@@ -30,6 +36,9 @@ class StockItem(models.Model):
     order = models.ForeignKey(CustomerOrder, related_name='stock_item', on_delete=models.PROTECT, blank=True, null=True)
     manual_stock_update = models.ForeignKey(ManualStockUpdate, related_name='stock_item', on_delete=models.PROTECT, blank=True, null=True)
 
+    def __str__(self):
+        return self.reference_code
+
     class Meta:
         ordering = ['invoice__delivery_date']
 
@@ -38,13 +47,3 @@ class StockItem(models.Model):
         if (self.order is None) and (self.manual_stock_update is None):
             return True
         return False
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.reference_code:
-            self.reference_code = self.generate_code
-
-
-
-
-
