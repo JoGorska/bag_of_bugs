@@ -1,41 +1,49 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django_extensions.db.fields import AutoSlugField
+from species.models import Species
+from stock_intake.models import PurchaseInvoice
+from orders.models import CustomerOrder
 
-# Create your models here.
+
+class LossGainReason(models.Model):
+    name = models.CharField(unique=True, blank=False, null=False)
+
+
+class ManualStockUpdate(models.Model):
+    reference_code = AutoSlugField(populate_from=['reason__name', 'date'], unique=True, blank=False, null=False)
+    reason = models.ForeignKey(LossGainReason, related_name='manual_stock_update', on_delete=models.PROTECT, blank=False, null=False)
+    date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, related_name='manual_stock_update', on_delete=models.PROTECT, blank=False, null=False)
+    confirm_called_police = models.BooleanField(blank=True, null=True)
+    date_when_called = models.DateField(blank=True, null=True)
+    police_ref = models.CharField(max_length=220, blank=True, null=True)
+    incident_raport = models.TextField(blank=True, null=True)
+
+
 class StockItem(models.Model):
-    species = models.ForeignKey()
-    invoice = models.ForeignKey()
-    net_price = models.DecimalField()
-    sale_price = models.DecimalField()
+    reference_code = AutoSlugField(populate_from=['species__name'], unique=True, blank=False, null=False)
+    species = models.ForeignKey(Species, related_name='stock_item', on_delete=models.PROTECT, blank=False, null=False)
+    invoice = models.ForeignKey(PurchaseInvoice, related_name='stock_item', on_delete=models.PROTECT, blank=False, null=False)
+    net_price = models.DecimalField(decimal_places=2, max_digits=20, blank=False, null=False)
+    sale_price = models.DecimalField(decimal_places=2, max_digits=20, blank=False, null=False)
+    order = models.ForeignKey(CustomerOrder, related_name='stock_item', on_delete=models.PROTECT, blank=True, null=True)
+    manual_stock_update = models.ForeignKey(ManualStockUpdate, related_name='stock_item', on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
         ordering = ['invoice__delivery_date']
 
-# todo methods: gross price
-# todo methods vat from invoice
+    @property
+    def in_stock(self):
+        if (self.order is None) and (self.manual_stock_update is None):
+            return True
+        return False
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.reference_code:
+            self.reference_code = self.generate_code
 
-
-class PurchaseInvoice(models.Model):
-    invoice_number = models.CharField()
-    date_issued = models.CharField()
-    total_net = models.CharField()
-    VAT_percentage = models.IntegerField()
-    suplier_name = models.CharField()
-    delivery_date = models.DateField()
-
-
-class LossGainReason(models.Model):
-    name = models.CharField()
-
-
-class ManualStockUpdate(models.Model):
-    stock_item = models.ForeignKey(StockItem)
-    reason = models.ForeignKey(LossGainReason)
-    date = models.DateTimeField()  # todo date time now
-    user = models.ForeignKey()
-    confirm_called_police = models.BooleanField()
-    date_when_called = models.DateField
-    police_ref = models.CharField
 
 
 
