@@ -16,7 +16,7 @@ class LossGainReason(models.Model):
 class ManualStockUpdate(models.Model):
     reference_code = AutoSlugField(populate_from=['reason__name', 'date'], unique=True, blank=False, null=False)
     reason = models.ForeignKey(LossGainReason, related_name='manual_stock_update', on_delete=models.PROTECT, blank=False, null=False)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True, blank=False, null=False)
     user = models.ForeignKey(User, related_name='manual_stock_update', on_delete=models.PROTECT, blank=False, null=False)
     confirm_called_police = models.BooleanField(blank=True, null=True)
     date_when_called = models.DateField(blank=True, null=True)

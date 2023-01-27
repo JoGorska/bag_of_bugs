@@ -48,6 +48,11 @@ INSTALLED_APPS = [
     'django_extensions',
     # my apps
     'home',
+    'orders',
+    'species',
+    'stock',
+    'stock_intake',
+
 ]
 
 MIDDLEWARE = [
