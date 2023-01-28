@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_extensions.db.fields import AutoSlugField
 from species.models import Species
-from stock_intake.models import PurchaseInvoice
+from suppliers.models import PurchaseInvoice
 from orders.models import CustomerOrder
 
 

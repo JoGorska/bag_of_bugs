@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'orders',
     'species',
     'stock',
-    'stock_intake',
+    'suppliers',
 
 ]
 
