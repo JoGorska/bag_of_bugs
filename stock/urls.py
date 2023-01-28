@@ -1,7 +1,8 @@
-from django.urls import path, include
+from django.urls import path
+from views import StockList
+
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # path('', include('home.urls')),
-    # path('stock/', include('stock.urls')),
+    path('', StockList.as_view(), name='stock_list'),
+
 ]

@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Species
+from .serializers import SpeciesSerializer
 
-# Create your views here.
+
+class BugsList(generics.ListCreateAPIView):
+    pass
+
+
+class BugDetail(generics.RetrieveDestroyAPIView):
+    pass
