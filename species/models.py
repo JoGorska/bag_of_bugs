@@ -14,6 +14,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "categories"
 
+
 class Size(models.Model):
     '''
     for example: small, medium, large
@@ -26,7 +27,7 @@ class Size(models.Model):
 
 class Enviroment(models.Model):
     '''
-    for example: indoor, outdoor, 
+    for example: indoor, outdoor
     '''
     name = models.CharField(max_length=220, unique=True, blank=False, null=False)
 
@@ -52,3 +53,7 @@ class Species(models.Model):
 
     class Meta:
         verbose_name_plural = "species"
+
+    @property
+    def stock_level(self):
+        return self.stock_item_set.count()
