@@ -14,6 +14,7 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'id',
             'slug',
             'name',
+            'price',
             'stock_level',
             'latin_name',
             'description',
@@ -21,5 +22,4 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'category',
             'size',
             'enviroment',
-
         )

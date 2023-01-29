@@ -32,7 +32,6 @@ class StockItem(models.Model):
     species = models.ForeignKey(Species, related_name='stock_item', on_delete=models.PROTECT, blank=False, null=False)
     invoice = models.ForeignKey(PurchaseInvoice, related_name='stock_item', on_delete=models.PROTECT, blank=True, null=True)
     net_price = models.DecimalField(decimal_places=2, max_digits=20, blank=False, null=False)
-    sale_price = models.DecimalField(decimal_places=2, max_digits=20, blank=False, null=False)
     updated = models.DateTimeField(auto_now_add=True, blank=False, null=False)
     in_stock = models.BooleanField(blank=False, null=False, default=True)
 

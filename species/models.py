@@ -40,6 +40,7 @@ class Species(models.Model):
     model describing bugs that can be sold in the shop
     '''
     name = models.CharField(max_length=220, unique=True, blank=False, null=False)
+    price = models.DecimalField(decimal_places=2, max_digits=20, blank=False, null=False)
     slug = AutoSlugField(populate_from=['name'], unique=True, blank=False, null=False)
     latin_name = models.CharField(max_length=220, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
