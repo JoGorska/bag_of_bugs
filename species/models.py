@@ -56,4 +56,8 @@ class Species(models.Model):
 
     @property
     def stock_level(self):
-        return self.stock_item_set.count()
+        '''
+        reverse foreign key lookup
+        '''
+        stock_items = self.stock_item.filter(in_stock=True)
+        return len(stock_items)

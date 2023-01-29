@@ -57,6 +57,3 @@ class StockItem(models.Model):
     class Meta:
         ordering = ['invoice__delivery_date']
 
-    # @property
-    # def species_stock_level(self):
-    #     return self.objects.filter(species=self.species).count()
