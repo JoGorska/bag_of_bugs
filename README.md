@@ -7,12 +7,31 @@ http://127.0.0.1:8000/species/
 
 this needs to list all species - list of all bugs. These are the items available for the user to purchase.
 
-## view stock levels for each produt
+## view stock levels for each product
+
+url pointing to slug of the species gives the details of this species and the stock level using foreign key reverse lookup
+
+http://127.0.0.1:8000/species/onufry/
 
 
+## allow to increment stock levels
+
+http://127.0.0.1:8000/stock/
+
+## decrementing stock levels
+if the stock has been sold / lost / destroyed, it should not be deleted from the database, it should be marked as in_stock = False and manual stock update should be added 
+
+### decrementing stock levels with manual stock update
+Decrementing stock value can happen if the stock runs away or dies. The Manual Stock Upade model handles such event. User can input manual stock update and add stock affected to many to many field
+
+the reason for manual stock update - model has option loss or gain.
+
+The signal from many to many field on ManualStockUpdate model updates stock item objects in stock field to true or false - depending on loss or gain.
+
+http://127.0.0.1:8000/stock/stock_update/
 
 
-than I need to check how much of each specie I have in stock - by going into stock item model.
+### decrementing stock levels with customer orders
 
 
 

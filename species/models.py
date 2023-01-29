@@ -59,5 +59,4 @@ class Species(models.Model):
         '''
         reverse foreign key lookup
         '''
-        stock_items = self.stock_item.filter(in_stock=True)
-        return len(stock_items)
+        return self.stock_item.filter(in_stock=True).count()

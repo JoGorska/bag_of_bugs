@@ -11,8 +11,6 @@ class StockItemAdmin(admin.ModelAdmin):
         'invoice',
         'sale_price',
         'order',
-        'manual_stock_update',
-        'in_stock',
         'updated',
     ]
 

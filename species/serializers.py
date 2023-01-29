@@ -21,4 +21,5 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'category',
             'size',
             'enviroment',
+
         )
