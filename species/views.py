@@ -4,6 +4,8 @@ from .serializers import SpeciesSerializer
 
 
 class BugsList(generics.ListCreateAPIView):
+    queryset = Species.objects.all()
+    serializer_class = SpeciesSerializer
     pass
 
 
