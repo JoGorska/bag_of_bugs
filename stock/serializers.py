@@ -12,7 +12,6 @@ class StockSerializer(serializers.ModelSerializer):
             'species',
             'invoice',
             'sale_price',
-            'order',
             'in_stock',
             'updated',
 

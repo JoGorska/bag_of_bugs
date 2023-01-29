@@ -1,11 +1,10 @@
 from django.db import models
-from django.db.models.signals import post_save, m2m_changed
+from django.db.models.signals import m2m_changed
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django_extensions.db.fields import AutoSlugField
 from species.models import Species
 from suppliers.models import PurchaseInvoice
-from orders.models import CustomerOrder
 
 
 class LossGainReason(models.Model):
@@ -34,7 +33,6 @@ class StockItem(models.Model):
     invoice = models.ForeignKey(PurchaseInvoice, related_name='stock_item', on_delete=models.PROTECT, blank=True, null=True)
     net_price = models.DecimalField(decimal_places=2, max_digits=20, blank=False, null=False)
     sale_price = models.DecimalField(decimal_places=2, max_digits=20, blank=False, null=False)
-    order = models.ForeignKey(CustomerOrder, related_name='stock_item', on_delete=models.PROTECT, blank=True, null=True)
     updated = models.DateTimeField(auto_now_add=True, blank=False, null=False)
     in_stock = models.BooleanField(blank=False, null=False, default=True)
 
@@ -46,6 +44,13 @@ class StockItem(models.Model):
 
 
 class ManualStockUpdate(models.Model):
+    '''
+    Manual Stock Update happens when loss or gain of stock needs to be recorded,
+    all events that affect stock level should be recorded to keep track of the stock
+    the normal stock intake would come from purchase invoice
+    normal stock outgoing would come from order
+    manual stock update is a third option that isn't covered by above situations
+    '''
     reference_code = AutoSlugField(populate_from=['reason__name', 'date'], unique=True, blank=False, null=False)
     reason = models.ForeignKey(LossGainReason, related_name='manual_stock_update', on_delete=models.PROTECT, blank=False, null=False)
     date = models.DateTimeField(auto_now_add=True, blank=False, null=False)
