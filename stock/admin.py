@@ -10,8 +10,8 @@ class StockItemAdmin(admin.ModelAdmin):
         'species',
         'invoice',
         'sale_price',
-        'order',
         'updated',
+        'in_stock'
     ]
 
 
