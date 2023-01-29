@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Species, Category, Size, Enviroment
+from .models import Species
 
 
 class SpeciesSerializer(serializers.ModelSerializer):
@@ -20,21 +20,3 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'size',
             'enviroment',
         )
-
-
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = '__all__'
-
-
-class SizeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Size
-        fields = '__all__'
-
-
-class EnviromentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Enviroment
-        fields = '__all__'
