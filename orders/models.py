@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from django.db import models
 from django.contrib.auth.models import User
 from species.models import Species
+from stock.models import StockItem
 
 
 class CustomerOrder(models.Model):
@@ -82,3 +83,7 @@ def update_on_save(sender, instance, created, **kwargs):
     to update total within order item
     """
     instance.order.update_total()
+    stock_items = StockItem.objects.filter(species=instance.species, in_stock=True)[:instance.quantity]
+    for item in stock_items:
+        item.in_stock = False
+        item.save()

@@ -23,7 +23,7 @@ class CustomerOrderSerializer(serializers.ModelSerializer):
 
 class OrderItemSerializer(serializers.ModelSerializer):
 
-    species_in_stock = Species.objects.filter(stock_item__in_stock=True)
+    species_in_stock = Species.objects.filter(stock_item__in_stock=True).distinct()
     species = serializers.PrimaryKeyRelatedField(queryset=species_in_stock)
 
     def validate(self, data):

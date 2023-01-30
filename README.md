@@ -40,7 +40,7 @@ Creating orders happens in two steps. First user needs to create order with his 
 
 http://127.0.0.1:8000/orders/
 
-than take the order refference number and go to this order's url to add order items
+than take the order refference number and go to this order's url to add order items into this order
 
 http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
 
@@ -48,7 +48,7 @@ http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
 
 ### Handling stock levels for customer orders
 
-Order item serializer checks which species are available and displays only available species 
+Order item serializer checks which species are available and displays only available species in the dropdown options
 http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
 
 As a next step - if customer chose quantity above current stock level of this species, the error is displayed to say that there isn't enough stock.
