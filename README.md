@@ -2,6 +2,15 @@
 # Bag of Bugs
 e-commerce application to manage the stock of the shop that is selling bugs. 
 
+
+## Database Design
+
+Database was design to handle the stock levels of the products. 
+
+The products for this e-commerce store are bugs. Model representing products is Species. User can make a decision which species he would like to buy.
+
+![database](docs/db_schema.png)
+
 ## List available products:
 
 The list of all available products is effectively the list of all bugs. From models perspecitve this is a list of all Species. These are the items available for the user to purchase.
@@ -43,8 +52,6 @@ http://127.0.0.1:8000/orders/
 than take the order refference number and go to this order's url to add order items into this order
 
 http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
-
-
 
 ### Handling stock levels for customer orders
 
