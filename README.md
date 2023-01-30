@@ -1,6 +1,6 @@
 
 # Bag of Bugs
-e-commerce application to manage the stock of the shop that is selling bugs. 
+e-commerce application to manage the stock of the shop that is selling bugs. [Deployed to Railway](https://bagofbugs-production.up.railway.app/)
 
 
 ## Database Design
