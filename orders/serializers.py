@@ -21,6 +21,8 @@ class CustomerOrderSerializer(serializers.ModelSerializer):
 
 class OrderItemSerializer(serializers.ModelSerializer):
     # enviroment = serializers.PrimaryKeyRelatedField(queryset=Enviroment.objects.all())
+    # todo - need to capture value of key from url to get the order
+    # todo need to return error if quantity exceeds stock
     class Meta:
         model = OrderItem
         fields = (

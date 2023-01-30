@@ -36,8 +36,13 @@ http://127.0.0.1:8000/stock/stock_update/
 
 
 ### Decrementing stock levels with customer orders
+Creating orders happens in two steps. First user needs to create order with his address
 
+http://127.0.0.1:8000/orders/
 
+than take the order refference number and go to this order's url to add order items
+
+http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
 
 instead of getting code from random it would be good to generate qr code for each stock item. 
 https://emmanuelkwakyenyantakyi.medium.com/qr-code-generator-api-with-django-369cae1d556f

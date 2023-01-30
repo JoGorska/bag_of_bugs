@@ -36,8 +36,9 @@ class CustomerOrder(models.Model):
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        self.order_total = self.lineitems.aggregate(
-                        Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.order_total = self.order_tems.aggregate(
+                        Sum('order_item_total'))['order_item_total__sum'] or 0
+
         self.save()
 
     def generate_code(self):
