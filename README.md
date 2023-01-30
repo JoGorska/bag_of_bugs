@@ -15,14 +15,14 @@ The products for this e-commerce store are bugs. Model representing products is 
 
 The list of all available products is effectively the list of all bugs. From models perspecitve this is a list of all Species. These are the items available for the user to purchase.
 
-http://127.0.0.1:8000/species/
+https://bagofbugs-production.up.railway.app/species/
 
 
 ## View stock levels for each product
 
 Url pointing to slug of a particular species gives the details of this species and the stock level using foreign key reverse lookup
 
-http://127.0.0.1:8000/species/onufry/
+https://bagofbugs-production.up.railway.app/species/european-garden-spider/
 
 
 ## Incrementing stock levels

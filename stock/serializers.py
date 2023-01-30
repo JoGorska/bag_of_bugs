@@ -11,7 +11,7 @@ class StockSerializer(serializers.ModelSerializer):
             'reference_code',
             'species',
             'invoice',
-            'sale_price',
+            'net_price',
             'in_stock',
             'updated',
 
