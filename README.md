@@ -1,13 +1,13 @@
 
 # Bag of Bugs
-e-commerce application to manage the stock of the shop that is selling bugs. 
+e-commerce application to manage the stock of the shop that is selling bugs. [Deployed to Railway](https://bagofbugs-production.up.railway.app/)
 
 
 ## Database Design
 
 Database was design to handle the stock levels of the products. 
 
-The products for this e-commerce store are bugs. Model representing products is Species. User can make a decision which species he would like to buy.
+The products for this e-commerce store are bugs. Model representing products is Species. User can make a decision which species he would like to buy. The [dbdiagram.io](https://dbdiagram.io/d/63d732e7296d97641d7ce68b) service was used to design the database
 
 ![database](docs/db_schema.png)
 
@@ -15,20 +15,20 @@ The products for this e-commerce store are bugs. Model representing products is 
 
 The list of all available products is effectively the list of all bugs. From models perspecitve this is a list of all Species. These are the items available for the user to purchase.
 
-http://127.0.0.1:8000/species/
+https://bagofbugs-production.up.railway.app/species/
 
 
 ## View stock levels for each product
 
 Url pointing to slug of a particular species gives the details of this species and the stock level using foreign key reverse lookup
 
-http://127.0.0.1:8000/species/onufry/
+https://bagofbugs-production.up.railway.app/species/european-garden-spider/
 
 
 ## Incrementing stock levels
 Stock items can be added in the stock endpoint.
 
-http://127.0.0.1:8000/stock/
+https://bagofbugs-production.up.railway.app/stock/
 
 ## Decrementing stock levels
 
@@ -41,22 +41,22 @@ the reason for manual stock update - model has option loss or gain.
 
 The signal from many to many field on ManualStockUpdate model updates stock item objects in stock field to true or false - depending on loss or gain.
 
-http://127.0.0.1:8000/stock/stock_update/
+https://bagofbugs-production.up.railway.app/stock/stock_update/
 
 
 ### Decrementing stock levels with customer orders
 Creating orders happens in two steps. First user needs to create order with his address
 
-http://127.0.0.1:8000/orders/
+https://bagofbugs-production.up.railway.app/orders/
 
 than take the order refference number and go to this order's url to add order items into this order
 
-http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
+https://bagofbugs-production.up.railway.app/orders/78A13C16F6C74073A247AE38D38E396C/
 
 ### Handling stock levels for customer orders
 
 Order item serializer checks which species are available and displays only available species in the dropdown options
-http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
+https://bagofbugs-production.up.railway.app/orders/78A13C16F6C74073A247AE38D38E396C/
 
 As a next step - if customer chose quantity above current stock level of this species, the error is displayed to say that there isn't enough stock.
 
