@@ -7,7 +7,7 @@ e-commerce application to manage the stock of the shop that is selling bugs.
 
 Database was design to handle the stock levels of the products. 
 
-The products for this e-commerce store are bugs. Model representing products is Species. User can make a decision which species he would like to buy.
+The products for this e-commerce store are bugs. Model representing products is Species. User can make a decision which species he would like to buy. The [dbdiagram.io](https://dbdiagram.io/d/63d732e7296d97641d7ce68b) service was used to design the database
 
 ![database](docs/db_schema.png)
 
