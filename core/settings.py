@@ -31,9 +31,9 @@ DEVELOPMENT = env('DEVELOPMENT') if 'DEVELOPMENT' in os.environ else False
 DEBUG = DEVELOPMENT
 
 if DEVELOPMENT:
-    ALLOWED_HOSTS = ['127.0.0.1']
+    ALLOWED_HOSTS = ['127.0.0.1', 'bagofbugs-production.up.railway.app']
 else:
-    ALLOWED_HOSTS = ['127.0.0.1']
+    ALLOWED_HOSTS = ['127.0.0.1', 'bagofbugs-production.up.railway.app']
 
 
 # Application definition
