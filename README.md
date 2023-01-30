@@ -28,7 +28,7 @@ https://bagofbugs-production.up.railway.app/species/european-garden-spider/
 ## Incrementing stock levels
 Stock items can be added in the stock endpoint.
 
-http://127.0.0.1:8000/stock/
+https://bagofbugs-production.up.railway.app/stock/
 
 ## Decrementing stock levels
 
@@ -41,22 +41,22 @@ the reason for manual stock update - model has option loss or gain.
 
 The signal from many to many field on ManualStockUpdate model updates stock item objects in stock field to true or false - depending on loss or gain.
 
-http://127.0.0.1:8000/stock/stock_update/
+https://bagofbugs-production.up.railway.app/stock/stock_update/
 
 
 ### Decrementing stock levels with customer orders
 Creating orders happens in two steps. First user needs to create order with his address
 
-http://127.0.0.1:8000/orders/
+https://bagofbugs-production.up.railway.app/orders/
 
 than take the order refference number and go to this order's url to add order items into this order
 
-http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
+https://bagofbugs-production.up.railway.app/orders/78A13C16F6C74073A247AE38D38E396C/
 
 ### Handling stock levels for customer orders
 
 Order item serializer checks which species are available and displays only available species in the dropdown options
-http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
+https://bagofbugs-production.up.railway.app/orders/78A13C16F6C74073A247AE38D38E396C/
 
 As a next step - if customer chose quantity above current stock level of this species, the error is displayed to say that there isn't enough stock.
 
