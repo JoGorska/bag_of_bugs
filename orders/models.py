@@ -16,7 +16,7 @@ class CustomerOrder(models.Model):
     once order is placed, the sstock item will become unavailable to
     other customers
     '''
-    reference_code = models.CharField(max_length=10, unique=True, blank=False, null=False)
+    reference_code = models.CharField(max_length=220, unique=True, blank=False, null=False)
     user = models.ForeignKey(User, related_name='customer_order', on_delete=models.PROTECT, blank=False, null=False)
     date = models.DateField(auto_now_add=True, blank=False, null=False)
     delivery_address = models.CharField(max_length=220, unique=True, blank=False, null=False)
