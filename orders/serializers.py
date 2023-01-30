@@ -3,6 +3,8 @@ from .models import CustomerOrder, OrderItem
 
 
 class CustomerOrderSerializer(serializers.ModelSerializer):
+    reference_code = serializers.ReadOnlyField()
+    order_total = serializers.ReadOnlyField()
 
     class Meta:
         model = CustomerOrder
@@ -18,6 +20,7 @@ class CustomerOrderSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    # enviroment = serializers.PrimaryKeyRelatedField(queryset=Enviroment.objects.all())
     class Meta:
         model = OrderItem
         fields = (

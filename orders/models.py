@@ -47,9 +47,9 @@ class CustomerOrder(models.Model):
         return code
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
         if not self.reference_code:
             self.reference_code = self.generate_code()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.reference_code
