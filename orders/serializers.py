@@ -2,7 +2,9 @@ from rest_framework import serializers
 from .models import CustomerOrder, OrderItem
 from species.models import Species
 
+
 class CustomerOrderSerializer(serializers.ModelSerializer):
+
     reference_code = serializers.ReadOnlyField()
     order_total = serializers.ReadOnlyField()
 
@@ -20,9 +22,9 @@ class CustomerOrderSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+
     species_in_stock = Species.objects.filter(stock_item__in_stock=True)
     species = serializers.PrimaryKeyRelatedField(queryset=species_in_stock)
-    # todo - need to capture value of order code from url to get the order
 
     def validate(self, data):
         quantity = data['quantity']
@@ -41,3 +43,4 @@ class OrderItemSerializer(serializers.ModelSerializer):
             'quantity',
             'order_item_total',
         )
+        read_only_fields = ('order',)
