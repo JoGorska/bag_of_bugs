@@ -44,10 +44,25 @@ than take the order refference number and go to this order's url to add order it
 
 http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
 
+
+
+### Handling stock levels for customer orders
+
+Order item serializer checks which species are available and displays only available species 
+http://127.0.0.1:8000/orders/86610F6843874357B44F91F8A9A4CD39/
+
+As a next step - if customer chose quantity above current stock level of this species, the error is displayed to say that there isn't enough stock.
+
+### Further development
+
+need to add signals from order to mark stock as in_stock = False
+need to add suppliers and handle stock intake - to create invoices and stock items. 
+
 instead of getting code from random it would be good to generate qr code for each stock item. 
 https://emmanuelkwakyenyantakyi.medium.com/qr-code-generator-api-with-django-369cae1d556f
 
-DRF tutorials:
+
+## DRF tutorials:
 Very Academy: Django + React, Restful API Course, Building a restful API
 
 https://youtu.be/soxd_xdHR0o

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import CustomerOrder, OrderItem
-
+from species.models import Species
 
 class CustomerOrderSerializer(serializers.ModelSerializer):
     reference_code = serializers.ReadOnlyField()
@@ -20,9 +20,19 @@ class CustomerOrderSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    # enviroment = serializers.PrimaryKeyRelatedField(queryset=Enviroment.objects.all())
-    # todo - need to capture value of key from url to get the order
-    # todo need to return error if quantity exceeds stock
+    species_in_stock = Species.objects.filter(stock_item__in_stock=True)
+    species = serializers.PrimaryKeyRelatedField(queryset=species_in_stock)
+    # todo - need to capture value of order code from url to get the order
+
+    def validate(self, data):
+        quantity = data['quantity']
+        species = data['species']
+        if quantity > species.stock_level:
+            raise serializers.ValidationError(
+                'Not enough bugs in stock, please reduce quantity'
+            )
+        return data
+
     class Meta:
         model = OrderItem
         fields = (
