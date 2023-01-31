@@ -2,6 +2,43 @@
 # Bag of Bugs
 e-commerce application to manage the stock of the shop that is selling bugs. [Deployed to Railway](https://bagofbugs-production.up.railway.app/)
 
+## Running project locally
+
+### Clone
+clone project locally (you will need to have ssh key set up on github)
+```
+git clone git@github.com:JoGorska/bag_of_bugs.git
+```
+or use
+```
+git clone https://github.com/JoGorska/bag_of_bugs.git
+```
+### Virtual enviroment
+I used venv, you can use any other. To make virtual enviroment
+```
+python3 -m venv <env_name>
+```
+activate env
+```
+source <env_name>/bin/activate
+```
+install requirements
+```
+pip3 install requirements.txt
+```
+
+### Enviromental variables
+add .env file in core folder
+you will need 
+```
+SECRET_KEY=<add your secret key here>
+```
+
+you can also add development variable to have debug=true
+```
+DEVELOPMENT=True
+```
+I also have database_url for my postgres database, If no DATABASE_URL is set, than it defaults to sqlite database.
 
 ## Database Design
 
