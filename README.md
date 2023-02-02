@@ -97,7 +97,11 @@ https://bagofbugs-production.up.railway.app/orders/78A13C16F6C74073A247AE38D38E3
 
 As a next step - if customer chose quantity above current stock level of this species, the error is displayed to say that there isn't enough stock.
 
-### Further development
+## Tests
+coverage run --omit='*/env/*' manage.py test
+coverage html
+
+## Further development
 
 need to add signals from order to mark stock as in_stock = False
 need to add suppliers and handle stock intake - to create invoices and stock items. 
