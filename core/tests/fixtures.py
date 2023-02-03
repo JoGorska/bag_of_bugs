@@ -4,7 +4,7 @@ import pytest
 
 
 @pytest.fixture
-def user_one(client):
+def user_one():
     return User.objects.get_or_create(
         email='user.one@test.me',
         password='supersecret',

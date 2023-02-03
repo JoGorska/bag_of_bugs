@@ -2,7 +2,6 @@ import pytest
 from ..models import Species, Size, Category, Enviroment
 
 
-
 @pytest.fixture
 def category():
     return Category.objects.get_or_create(
