@@ -6,3 +6,4 @@ import pytest
 def test_orders_list_returns_orders(client):
     response = client.get(reverse('orders_list'))
     assert response.status_code == 200
+
