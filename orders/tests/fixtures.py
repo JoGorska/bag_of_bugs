@@ -1,7 +1,9 @@
 import pytest
-from ..models import OrderItem, CustomerOrder
-from ...core.tests.fixtures import user_one
-from ...species.tests.fixtures import category, size, enviroment, species
+from orders.models import OrderItem, CustomerOrder
+from core.tests.fixtures import user_one
+from species.tests.fixtures import category, size, enviroment, species
+
+
 # todo add setup.cfg to ignore errors with imports in tests
 
 @pytest.fixture

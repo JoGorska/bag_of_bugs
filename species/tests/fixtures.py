@@ -1,5 +1,5 @@
 import pytest
-from ..models import Species, Size, Category, Enviroment
+from species.models import Species, Size, Category, Enviroment
 
 
 @pytest.fixture
