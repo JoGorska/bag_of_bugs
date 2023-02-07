@@ -99,6 +99,7 @@ As a next step - if customer chose quantity above current stock level of this sp
 
 ## Tests
 coverage run --omit=*/env/*,*/migrations/*,*/tests* manage.py test
+coverage run -m pytest
 coverage html
 coverage report
 
