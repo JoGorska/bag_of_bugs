@@ -14,5 +14,3 @@ def test_orders_list_returns_orders(client, order_one, order_two):
     orders_in_db = CustomerOrder.objects.count
     print(len(json_response))
     assert orders_in_db == len(json_response)
-
-

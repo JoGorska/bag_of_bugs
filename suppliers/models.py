@@ -20,3 +20,7 @@ class PurchaseInvoice(models.Model):
 
     def __str__(self):
         return self.invoice_number
+
+
+# todo purchase invoice item,
+#  to create mmore stock and relate to purchase invoice
