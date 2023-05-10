@@ -7,7 +7,7 @@ from ..models import Supplier, PurchaseInvoice
 def supplier():
     return Supplier.objects.get_or_create(
         name='Jumping spider suppliers'
-    )
+    )[0]
 
 @pytest.fixture
 def purchase_invoice():

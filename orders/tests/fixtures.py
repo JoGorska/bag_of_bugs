@@ -12,7 +12,7 @@ def order_one(user_one):
         user=user_one,
         delivery_address='Long street',
         postcode='WD3 2AD'
-    )
+    )[0]
 
 
 @pytest.fixture
@@ -31,7 +31,7 @@ def order_two(user_one):
         user=user_one,
         delivery_address='Short street',
         postcode='WD3 2AD'
-    )
+    )[0]
 
 
 @pytest.fixture

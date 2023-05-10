@@ -121,3 +121,5 @@ https://youtu.be/soxd_xdHR0o
 Dennis Ivy DRF + React
 
 https://youtu.be/c0x_AaPjNCY
+
+Rithmic REST API with pytest
